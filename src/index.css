@@ -1,12 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&family=League+Spartan:wght@400;700&display=swap");
+
+/* variables */
 :root {
-  --margin: 2em 2.5em;
+  --clr-neutral-100: hsl(0, 0%, 100%);
+  --clr-neutral-400: hsl(240, 6%, 54%);
+  --clr-neutral-600: hsl(240, 17%, 26%);
+  --clr-neutral-800: hsl(240, 67%, 8%);
+
+  --clr-primary-mercury: hsl(194, 48%, 49%);
+  --clr-primary-venus: hsl(33, 82%, 61%);
+  --clr-primary-earth: hsl(263, 67%, 51%);
+  --clr-primary-mars: hsl(10, 63%, 51%);
+  --clr-primary-juptier: hsl(2, 68%, 53%);
+  --clr-primary-saturn: hsl(17, 73%, 46%);
+  --clr-primary-uranus: hsl(169, 73%, 44%);
+  --clr-primary-neptune: hsl(222, 87%, 56%);
+
+  /*font-family*/
+  --ff-spartan: "League Spartan", sans-serif;
+  --ff-antonio: "Antonio", sans-serif;
+
+  /*font sizes, all at 16px*/
+  --fs-100: 0.5rem; /*8px*/
+  --fs-150: 0.563rem; /*9px*/
+  --fs-200: 0.688rem; /*11px*/
+  --fs-250: 0.75rem; /*12px*/
+  --fs-300: 0.875rem; /*14px*/
+  --fs-350: 0.938rem; /*15px*/
+  --fs-400: 1.25rem; /*20px*/
+  --fs-500: 1.5rem; /*24px*/
+  --fs-600: 1.75rem; /*28px*/
+  --fs-700: 2.5rem; /*40px*/
+  --fs-800: 3rem; /*48*/
+  --fs-900: 5rem; /*80*/
+
+  /*font-weights*/
+  --fw-normal: 400;
+  --fw-bold: 700;
 }
 
-@media (max-width: 500px) {
+/* mobile styles */
+@media screen and (min-width: 000px) {
   :root {
-    --margin: 1em 1.5em;
+    --fs-h1: var(--fs-600);
+    --fs-site-nav: var(--fs-350);
+    --fs-h2: var(--fs-700);
+    --fs-planet-info-p: var(--fs-200);
+    --fs-planet-info-source: var(--fs-250);
+    --fs-planet-info-nav: var(--fs-200);
+    --fs-h3: var(--fs-300);
+    --fs-planet-fact-p: var(--fs-400);
   }
 }
+
+/* tablet styles */
+@media screen and (min-width: 768px) {
+  :root {
+    --fs-h2: var(--fs-800);
+    --fs-planet-fact-p: var(--fs-500);
+
+    --margin: 32px 39px;
+  }
+}
+
+/* desktop styles */
+@media screen and (min-width: 1440px) {
+  :root {
+    --fs-site-nav: var(--fs-200);
+    --fs-h2: var(--fs-900);
+    --fs-planet-info-p: var(--fs-300);
+    --fs-planet-info-source: var(--fs-300);
+    --fs-planet-info-nav: var(--fs-250);
+    --fs-h3: var(--fs-200);
+    --fs-planet-fact-p: var(--fs-700);
+  }
+}
+
+/*
+  --header
+  h1 - antonio 400fw 28px 36.21lh --clr-n-100
+  site nav a - Spartan 700fw  11px 25lh --clr-n-100?? maybe 300, 100 on hover and line over top!!
+      mobile...               15px  --clr-n-100 for sure 
+
+  --planet-info
+  h2 - antonio 400fw  80px  103.52lh --clr-n-100
+      tablet....      48px  62.11lh
+      mobile....      40px  51.76lh
+  p - spartan 400fw 14px  25lh --clr-n-100
+      tablet....    11px  22lh
+      mobile...     11px  22lh
+  footer 'SOURCE' - spartan 400fw 14px  25lh --clr-n-100?? maybe 300
+      tablet...                   12px  
+      mobile...                   12px  
+  footer 'WIKIPEDIA' - spartan 700fw  14px 25lh --clr-n-100?  maybe 300
+      tablet...                       12px
+      mobile...                       12px
+
+  --planet-info-nav
+  feature nav button number - spartan 700fw 12px 25lh --clr-n-100? maybe 300
+      tablet...                             9px
+      mobile...        HIDDEN
+  feature nav button text - spartan 700fw 12px 25lh --clr-n-100
+      tablet...                           9px
+      mobile...                                10lh?
+
+  --planet facts
+  h3 - Spartan 700fw  11px 25lh - clr-n-100? 300 maybe
+      tablet...       8px  16lh
+      mobile...       8px  16lh
+  p - antonio 400fw 40px 51.76lh - clr-n-100
+      tablet...     24px 31.05lh
+      mobile...     20px 25.88lh
+  */
+
+/* reset */
 /* Box sizing rules */
 *,
 *::before,
@@ -37,7 +144,7 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  margin: var(--margin);
+  font: 16px;
 }
 
 /* A elements that don't have a class get default styles */
@@ -76,54 +183,186 @@ select {
   }
 }
 
-/*mobile*/
-header{
-  color: red;
-  display: flex;
-  justify-content: space-between;
+/*remove style and color from links*/
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-.site-nav > ul{
-  display: none;
+/* basic styles */
+body {
+  background-color: var(--clr-neutral-800);
+  background-image: url(./assets/background-stars.svg);
 }
 
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
 
-/*tablet*/
-@media (min-width: 500px) {
-  header{
-    color: blue;
-    text-align: center;
-    flex-direction: column;
+/* fonts?? */
+h1 {
+  font-family: var(--ff-antonio);
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-normal);
+  color: var(--clr-neutral-100);
+}
+h2 {
+  font-family: var(--ff-antonio);
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-normal);
+  color: var(--clr-neutral-100);
+}
+h3 {
+  font-family: var(--ff-spartan);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  color: var(--clr-neutral-400);
+}
+#header-and-nav a {
+  font-family: var(--ff-spartan);
+  font-size: var(--fs-site-nav);
+  font-weight: var(--fw-bold);
+  color: var(--clr-neutral-400);
+}
+#header-and-nav a:hover {
+  color: var(--clr-neutral-100);
+}
+#planet-info p {
+  font-family: var(--ff-spartan);
+  font-size: var(--fs-planet-info-p);
+  font-weight: var(--fw-normal);
+  color: var(--clr-neutral-100);
+}
+#planet-info nav {
+  font-family: var(--ff-spartan);
+  font-size: var(--fs-planet-info-nav);
+  font-weight: var(--fw-bold);
+  color: var(--clr-neutral-400);
+}
+#planet-info footer {
+  font-family: var(--ff-spartan);
+  font-size: var(--fs-planet-info-source);
+  font-weight: var(--fw-normal);
+  color: var(--clr-neutral-400);
+}
+#planet-info a {
+  font-weight: var(--fw-bold);
+  text-decoration: underline;
+}
+#planet-info nav {
+  font-family: var(--ff-spartan);
+  font-size: var(--fs-planet-info-nav);
+  font-family: var(--fw-bold);
+  color: var(--clr-neutral-400);
+}
+#planet-facts p {
+  font-family: var(--ff-antonio);
+  font-size: var(--fs-planet-fact-p);
+  font-weight: var(--fw-normal);
+}
+#planet-info .num {
+  color: var(--clr-neutral-400);
+}
+
+#planet-facts p {
+  font-family: var(--ff-antonio);
+  font-size: var(--fs-planet-fact-p);
+  font-weight: var(--fw-normal);
+  color: var(--clr-neutral-100);
+}
+
+#planet-facts article {
+  border: 1px solid var(--clr-neutral-400);
+}
+
+/* mobile styles */
+@media screen and (min-width: 200px) {
+  body {
+    margin: 16px 24px;
   }
-  .site-nav > svg{
-    display: none;
-  }  
 
-  .site-nav > ul{
+  #header-and-nav {
+    align-items: center;
+  }
+
+  #header-and-nav h1 {
+    grid-column: 1/10;
+  }
+
+  #header-and-nav svg {
+    grid-column: 12/13;
+  }
+
+  #header-and-nav nav {
+    display: none;
+  }
+
+  #planet-info nav {
+    grid-column: 1/13;
+    grid-row: 1;
+    border-top: 1px solid var(--clr-neutral-400);
+    border-bottom: 1px solid var(--clr-neutral-400);
+    margin-top: 16px;
+  }
+
+  #planet-info ol {
     display: flex;
     justify-content: space-between;
-
   }
 
+  #planet-info li {
+    padding-top: 20px;
+    padding-bottom: 16px;
+    border-bottom: 4px solid transparent;
+    text-transform: uppercase;
   }
 
-
-/*desktop*/
-  @media (min-width: 800px) {
-    header{
-      color: green;
-      flex-direction: row;
-    }
-    
-    .site-nav > ul{
-      gap: .8em;
-    }
-
+  #planet-info .hide {
+    display: none;
   }
 
+  #planet-info li:hover,
+  #planet-info li:focus,
+  #planet-info li:active {
+    color: var(--clr-neutral-100);
+    border-bottom: 4px solid var(--clr-primary-earth);
+  }
 
+  #planet-info img {
+    grid-column: 4/10;
+    width: 100%;
+    margin-top: 45px;
+    margin-bottom: 45px;
+  }
 
+  #planet-info article {
+    grid-column: 1/13;
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  #planet-info p {
+    margin-top: 16px;
+    margin-bottom: 32px;
+  }
 
-/*at mobile, hide names
-show hamburger menu
-click on burger to show names
+  #planet-facts {
+    gap: 8px;
+  }
+
+  #planet-facts article {
+    grid-column: 1/13;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 24px;
+    align-items: center;
+  }
+}
+
+/* tablet styles */
+@media screen and (min-width: 768px) {
+}
+
+/* desktop styles */
+@media screen and (min-width: 1440px) {
+}

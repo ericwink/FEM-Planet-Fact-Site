@@ -388,9 +388,10 @@ h3 {
 
   #planet-info .planet {
     grid-column: 4/10;
-    width: 100%;
-    margin-top: 45px;
-    margin-bottom: 45px;
+    max-width: 173px;
+    max-height: 173px;
+    justify-self: center;
+    margin: 7vh 0;
   }
 
   #planet-info article {
@@ -401,6 +402,7 @@ h3 {
   #planet-info p {
     margin-top: 16px;
     margin-bottom: 32px;
+    line-height: 22px;
   }
 
   #planet-info .source {
@@ -471,8 +473,8 @@ h3 {
     grid-row: 1;
     grid-column: 1/13;
     justify-self: center;
-    margin-top: 10vh;
-    margin-bottom: 7vh;
+    margin-top: 8vh;
+    margin-bottom: 8vh;
     max-height: 265px;
     max-width: 265px;
   }
@@ -485,6 +487,7 @@ h3 {
     grid-row: 2;
     padding: 16px 0px;
     border: none;
+    margin-top: 5vh;
   }
   #planet-info ol {
     display: flex;
@@ -521,17 +524,22 @@ h3 {
     flex-direction: column;
     align-items: flex-start;
     padding: 15px;
-    margin-top: 2.5vh;
+    margin-top: 2vh;
   }
 }
 
 /* desktop styles */
 @media screen and (min-width: 1000px) {
+  body {
+    margin: 10px 0px;
+  }
   .desktop-wrapper {
     display: grid;
     align-items: center;
     max-width: 1440px;
     margin: auto;
+    padding: 0px 32px;
+    border-bottom: 1px solid var(--clr-neutral-400);
   }
   #header {
     display: block;
@@ -539,13 +547,13 @@ h3 {
   }
   #planet-nav {
     grid-column: 8/13;
-    gap: 30px;
     border: none;
   }
+
   .wrapper {
     max-width: 1100px;
     margin: auto;
-    margin-top: 5vh;
+    margin-top: 10vh;
   }
 
   #planet-info .planet {
@@ -553,8 +561,8 @@ h3 {
     grid-column: 1/10;
     align-self: center;
     justify-self: center;
-    width: 400px;
-    height: 400px;
+    max-width: 400px;
+    max-height: 400px;
   }
 
   #planet-info article {
@@ -571,7 +579,7 @@ h3 {
   }
 
   #planet-facts {
-    margin-top: 4vh;
+    margin-top: 3vh;
     gap: 30px;
   }
 

@@ -11,8 +11,8 @@
   --clr-primary-venus: hsl(33, 82%, 61%);
   --clr-primary-earth: hsl(263, 67%, 51%);
   --clr-primary-mars: hsl(10, 63%, 51%);
-  --clr-primary-juptier: hsl(2, 68%, 53%);
-  --clr-primary-saturn: hsl(17, 73%, 46%);
+  --clr-primary-jupiter: hsl(27, 75%, 70%);
+  --clr-primary-saturn: hsl(40, 96%, 70%);
   --clr-primary-uranus: hsl(169, 73%, 44%);
   --clr-primary-neptune: hsl(222, 87%, 56%);
 
@@ -282,28 +282,84 @@ h3 {
     margin: 16px 24px;
   }
 
-  #header-and-nav {
+  #header {
     align-items: center;
+    border-bottom: 1px solid var(--clr-neutral-400);
+    padding-bottom: 10px;
   }
 
-  #header-and-nav h1 {
+  #header h1 {
     grid-column: 1/10;
   }
 
-  #header-and-nav svg {
+  #header svg {
     grid-column: 12/13;
+    justify-self: end;
   }
 
-  #header-and-nav nav {
-    display: none;
+  #planet-nav {
+    grid-column: 1/13;
+    height: 0px;
+    overflow: hidden;
+    transition: 0.5s;
+  }
+
+  #planet-nav.show {
+    height: 520px;
+  }
+
+  #planet-nav li {
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    align-items: center;
+    padding: 20px 0px;
+    border-bottom: 1px solid var(--clr-neutral-400);
+  }
+
+  #planet-nav .planet-icon {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+  }
+
+  #planet-nav .mercury {
+    background-color: var(--clr-primary-mercury);
+  }
+  #planet-nav .venus {
+    background-color: var(--clr-primary-venus);
+  }
+  #planet-nav .earth {
+    background-color: var(--clr-primary-earth);
+  }
+  #planet-nav .mars {
+    background-color: var(--clr-primary-mars);
+  }
+  #planet-nav .jupiter {
+    background-color: var(--clr-primary-jupiter);
+  }
+  #planet-nav .saturn {
+    background-color: var(--clr-primary-saturn);
+  }
+  #planet-nav .uranus {
+    background-color: var(--clr-primary-uranus);
+  }
+  #planet-nav .neptune {
+    background-color: var(--clr-primary-neptune);
+  }
+
+  #planet-nav a {
+    color: var(--clr-neutral-100);
+  }
+
+  #planet-nav .chevron {
+    justify-self: end;
   }
 
   #planet-info nav {
     grid-column: 1/13;
     grid-row: 1;
-    border-top: 1px solid var(--clr-neutral-400);
     border-bottom: 1px solid var(--clr-neutral-400);
-    margin-top: 16px;
+    margin-top: 5px;
   }
 
   #planet-info ol {
@@ -344,6 +400,14 @@ h3 {
   #planet-info p {
     margin-top: 16px;
     margin-bottom: 32px;
+  }
+
+  #planet-info .source {
+    display: inline-block;
+    margin: 0;
+    width: 12px;
+    transform: translateY(2px);
+    margin-left: 3px;
   }
 
   #planet-facts {

@@ -54,17 +54,15 @@
 }
 
 /* tablet styles */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
   :root {
     --fs-h2: var(--fs-800);
     --fs-planet-fact-p: var(--fs-500);
-
-    --margin: 32px 39px;
   }
 }
 
 /* desktop styles */
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1000px) {
   :root {
     --fs-site-nav: var(--fs-200);
     --fs-h2: var(--fs-900);
@@ -141,7 +139,6 @@ html:focus-within {
 
 /* Set core body defaults */
 body {
-  min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   font: 16px;
@@ -219,15 +216,19 @@ h3 {
   font-weight: var(--fw-bold);
   color: var(--clr-neutral-400);
 }
-#header-and-nav a {
+#planet-nav a {
   font-family: var(--ff-spartan);
   font-size: var(--fs-site-nav);
   font-weight: var(--fw-bold);
-  color: var(--clr-neutral-400);
-}
-#header-and-nav a:hover {
   color: var(--clr-neutral-100);
 }
+
+@media (hover: hover) {
+  #planet-nav a:hover {
+    color: var(--clr-neutral-400);
+  }
+}
+
 #planet-info p {
   font-family: var(--ff-spartan);
   font-size: var(--fs-planet-info-p);
@@ -250,19 +251,21 @@ h3 {
   font-weight: var(--fw-bold);
   text-decoration: underline;
 }
-#planet-info nav {
+#planet-info nav * {
   font-family: var(--ff-spartan);
   font-size: var(--fs-planet-info-nav);
   font-family: var(--fw-bold);
+  color: var(--clr-neutral-100);
+}
+
+#planet-info .num {
   color: var(--clr-neutral-400);
 }
+
 #planet-facts p {
   font-family: var(--ff-antonio);
   font-size: var(--fs-planet-fact-p);
   font-weight: var(--fw-normal);
-}
-#planet-info .num {
-  color: var(--clr-neutral-400);
 }
 
 #planet-facts p {
@@ -347,10 +350,6 @@ h3 {
     background-color: var(--clr-primary-neptune);
   }
 
-  #planet-nav a {
-    color: var(--clr-neutral-100);
-  }
-
   #planet-nav .chevron {
     justify-self: end;
   }
@@ -372,6 +371,7 @@ h3 {
     padding-bottom: 16px;
     border-bottom: 4px solid transparent;
     text-transform: uppercase;
+    color: var(--clr-neutral-400);
   }
 
   #planet-info .hide {
@@ -383,9 +383,10 @@ h3 {
   #planet-info li:active {
     color: var(--clr-neutral-100);
     border-bottom: 4px solid var(--clr-primary-earth);
+    cursor: pointer;
   }
 
-  #planet-info img {
+  #planet-info .planet {
     grid-column: 4/10;
     width: 100%;
     margin-top: 45px;
@@ -424,9 +425,158 @@ h3 {
 }
 
 /* tablet styles */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
+  body {
+    margin: 32px 39px;
+  }
+  #header {
+    border: none;
+  }
+  #header h1 {
+    grid-column: 1/13;
+    justify-self: center;
+  }
+
+  #header svg {
+    display: none;
+  }
+
+  #planet-nav {
+    display: block;
+    height: 100%;
+    border-bottom: 1px solid var(--clr-neutral-400);
+  }
+  #planet-nav ul {
+    display: flex;
+    justify-content: space-between;
+  }
+  #planet-nav li {
+    display: inline-block;
+    border: none;
+  }
+  #planet-nav a {
+    color: var(--clr-neutral-400);
+  }
+  @media (hover: hover) {
+    #planet-nav a:hover {
+      color: var(--clr-neutral-100);
+    }
+  }
+  #planet-nav .planet-icon,
+  #planet-nav .chevron {
+    display: none;
+  }
+
+  #planet-info .planet {
+    grid-row: 1;
+    grid-column: 1/13;
+    justify-self: center;
+    margin-top: 10vh;
+    margin-bottom: 7vh;
+    max-height: 265px;
+    max-width: 265px;
+  }
+  #planet-info article {
+    grid-column: 1/6;
+    text-align: left;
+  }
+  #planet-info nav {
+    grid-column: 8/13;
+    grid-row: 2;
+    padding: 16px 0px;
+    border: none;
+  }
+  #planet-info ol {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  #planet-info li {
+    border: 1px solid var(--clr-neutral-400);
+    color: var(--clr-neutral-100);
+    height: 40px;
+    padding: 8px 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  #planet-info .hide {
+    display: block;
+  }
+  #planet-info .num {
+    margin-right: 17px;
+  }
+
+  @media (hover: hover) {
+    #planet-info li:hover,
+    #planet-info li:active {
+      border: 1px solid var(--clr-neutral-400);
+      background-color: var(--clr-primary-earth);
+      cursor: pointer;
+    }
+  }
+
+  #planet-facts article {
+    grid-column: span 3;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+    margin-top: 2.5vh;
+  }
 }
 
 /* desktop styles */
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1000px) {
+  .desktop-wrapper {
+    display: grid;
+    align-items: center;
+    max-width: 1440px;
+    margin: auto;
+  }
+  #header {
+    display: block;
+    grid-column: 1/3;
+  }
+  #planet-nav {
+    grid-column: 8/13;
+    gap: 30px;
+    border: none;
+  }
+  .wrapper {
+    max-width: 1100px;
+    margin: auto;
+    margin-top: 5vh;
+  }
+
+  #planet-info .planet {
+    grid-row: span 2;
+    grid-column: 1/10;
+    align-self: center;
+    justify-self: center;
+    width: 400px;
+    height: 400px;
+  }
+
+  #planet-info article {
+    grid-column: 10/13;
+  }
+
+  #planet-info nav {
+    grid-row: 2;
+    grid-column: 10/13;
+  }
+
+  #planet-info .num {
+    margin-right: 20px;
+  }
+
+  #planet-facts {
+    margin-top: 4vh;
+    gap: 30px;
+  }
+
+  #planet-facts article {
+    height: 128px;
+    max-width: 255px;
+  }
 }

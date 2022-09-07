@@ -7,14 +7,16 @@
   --clr-neutral-600: hsl(240, 17%, 26%);
   --clr-neutral-800: hsl(240, 67%, 8%);
 
-  --clr-primary-mercury: hsl(194, 48%, 49%);
-  --clr-primary-venus: hsl(33, 82%, 61%);
-  --clr-primary-earth: hsl(263, 67%, 51%);
-  --clr-primary-mars: hsl(10, 63%, 51%);
-  --clr-primary-jupiter: hsl(27, 75%, 70%);
-  --clr-primary-saturn: hsl(40, 96%, 70%);
-  --clr-primary-uranus: hsl(169, 73%, 44%);
-  --clr-primary-neptune: hsl(222, 87%, 56%);
+  --clr-primary-Mercury: hsl(194, 48%, 49%);
+  --clr-primary-Venus: hsl(33, 82%, 61%);
+  --clr-primary-Earth: hsl(263, 67%, 51%);
+  --clr-primary-Mars: hsl(10, 63%, 51%);
+  --clr-primary-Jupiter: hsl(27, 75%, 70%);
+  --clr-primary-Saturn: hsl(40, 96%, 70%);
+  --clr-primary-Uranus: hsl(169, 73%, 44%);
+  --clr-primary-Neptune: hsl(222, 87%, 56%);
+
+  --clr-planet: var(--clr-primary-earth);
 
   /*font-family*/
   --ff-spartan: "League Spartan", sans-serif;
@@ -326,28 +328,28 @@ h3 {
   }
 
   #planet-nav .mercury {
-    background-color: var(--clr-primary-mercury);
+    background-color: var(--clr-primary-Mercury);
   }
   #planet-nav .venus {
-    background-color: var(--clr-primary-venus);
+    background-color: var(--clr-primary-Venus);
   }
   #planet-nav .earth {
-    background-color: var(--clr-primary-earth);
+    background-color: var(--clr-primary-Earth);
   }
   #planet-nav .mars {
-    background-color: var(--clr-primary-mars);
+    background-color: var(--clr-primary-Mars);
   }
   #planet-nav .jupiter {
-    background-color: var(--clr-primary-jupiter);
+    background-color: var(--clr-primary-Jupiter);
   }
   #planet-nav .saturn {
-    background-color: var(--clr-primary-saturn);
+    background-color: var(--clr-primary-Saturn);
   }
   #planet-nav .uranus {
-    background-color: var(--clr-primary-uranus);
+    background-color: var(--clr-primary-Uranus);
   }
   #planet-nav .neptune {
-    background-color: var(--clr-primary-neptune);
+    background-color: var(--clr-primary-Neptune);
   }
 
   #planet-nav .chevron {
@@ -366,6 +368,10 @@ h3 {
     justify-content: space-between;
   }
 
+  #planet-info .hide {
+    display: none;
+  }
+
   #planet-info li {
     padding-top: 20px;
     padding-bottom: 16px;
@@ -374,22 +380,25 @@ h3 {
     color: var(--clr-neutral-400);
   }
 
-  #planet-info .hide {
-    display: none;
-  }
-
-  #planet-info li:focus,
-  #planet-info li:active {
+  #planet-info li.active {
     color: var(--clr-neutral-100);
-    border-bottom: 4px solid var(--clr-primary-earth);
+    border-bottom: 4px solid var(--clr-planet);
   }
 
   @media (hover: hover) {
     #planet-info li:hover {
       color: var(--clr-neutral-100);
-      border-bottom: 4px solid var(--clr-primary-earth);
+      border-bottom: 4px solid var(--clr-planet);
       cursor: pointer;
     }
+  }
+  #planet-info li:focus-visible {
+    color: var(--clr-neutral-100);
+    border-bottom: 4px solid var(--clr-planet);
+  }
+  #planet-info li:active {
+    color: var(--clr-neutral-100);
+    border-bottom: 4px solid var(--clr-planet);
   }
 
   #planet-info .image-wrapper {
@@ -488,7 +497,7 @@ h3 {
     color: var(--clr-neutral-400);
   }
 
-  #planet-nav a:focus #planet-nav a:active {
+  #planet-nav a.active {
     color: var(--clr-neutral-100);
   }
 
@@ -497,6 +506,11 @@ h3 {
       color: var(--clr-neutral-100);
     }
   }
+  #planet-nav a:focus-visible,
+  #planet-nav a:active {
+    color: var(--clr-neutral-100);
+  }
+
   #planet-nav .planet-icon,
   #planet-nav .chevron {
     display: none;
@@ -544,11 +558,10 @@ h3 {
     align-items: center;
     gap: 5px;
   }
-  #planet-info .hide {
-    display: block;
-  }
-  #planet-info .num {
-    margin-right: 17px;
+
+  #planet-info li.active {
+    border: 1px solid var(--clr-planet);
+    background-color: var(--clr-planet);
   }
 
   @media (hover: hover) {
@@ -559,14 +572,21 @@ h3 {
     }
   }
 
-  #planet-info li:focus {
+  #planet-info li:focus-visible {
     border: 1px solid var(--clr-neutral-400);
     background-color: var(--clr-neutral-600);
   }
 
   #planet-info li:active {
-    border: 1px solid var(--clr-neutral-400);
-    background-color: var(--clr-primary-earth);
+    border: 1px solid var(--clr-planet);
+    background-color: var(--clr-planet);
+  }
+
+  #planet-info .hide {
+    display: block;
+  }
+  #planet-info .num {
+    margin-right: 17px;
   }
 
   #planet-facts article {
@@ -581,7 +601,7 @@ h3 {
 /* desktop styles */
 @media screen and (min-width: 1000px) {
   body {
-    margin: 10px 0px;
+    margin: 0px 0px;
   }
   .desktop-header-wrapper {
     display: grid;
@@ -601,6 +621,25 @@ h3 {
     border: none;
     height: 100%;
     transition: 0s;
+  }
+
+  #planet-nav a {
+    padding-top: 25px;
+  }
+
+  #planet-nav a.active {
+    color: var(--clr-neutral-100);
+  }
+
+  @media (hover: hover) {
+    #planet-nav a:hover {
+      color: var(--clr-neutral-100);
+      border-top: 4px solid var(--clr-planet);
+    }
+  }
+  #planet-nav a:focus-visible,
+  #planet-nav a:active {
+    color: var(--clr-planet);
   }
 
   .desktop-body-wrapper {

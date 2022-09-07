@@ -127,6 +127,10 @@ button,
 textarea,
 select {
   font: inherit;
+  background-color: inherit;
+  border: none;
+  color: inherit;
+  width: fit-content;
 }
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
@@ -254,9 +258,15 @@ h3 {
     grid-column: 1/10;
   }
 
-  #header svg {
+  #header button {
     grid-column: 12/13;
     justify-self: end;
+  }
+
+  @media (hover: hover) {
+    #header button {
+      cursor: pointer;
+    }
   }
 
   #planet-nav {
@@ -270,16 +280,18 @@ h3 {
     height: 520px;
   }
 
-  #planet-nav li {
+  #planet-nav button {
     display: grid;
     grid-template-columns: 1fr 8fr 1fr;
     align-items: center;
     padding: 20px 0px;
     border-bottom: 1px solid var(--clr-neutral-400);
+    width: 100%;
+    justify-items: start;
   }
 
   @media (hover: hover) {
-    #planet-nav li:hover {
+    #planet-nav button:hover {
       color: var(--clr-neutral-400);
       cursor: pointer;
     }
@@ -336,7 +348,7 @@ h3 {
     display: none;
   }
 
-  #planet-info li {
+  #planet-info button {
     padding-top: 20px;
     padding-bottom: 16px;
     border-bottom: 4px solid transparent;
@@ -344,23 +356,23 @@ h3 {
     color: var(--clr-neutral-400);
   }
 
-  #planet-info li.active {
+  #planet-info button.active {
     color: var(--clr-neutral-100);
     border-bottom: 4px solid var(--clr-planet);
   }
 
   @media (hover: hover) {
-    #planet-info li:hover {
+    #planet-info button:hover {
       color: var(--clr-neutral-100);
       border-bottom: 4px solid var(--clr-planet);
       cursor: pointer;
     }
   }
-  #planet-info li:focus-visible {
+  #planet-info button:focus-visible {
     color: var(--clr-neutral-100);
     border-bottom: 4px solid var(--clr-planet);
   }
-  #planet-info li:active {
+  #planet-info button:active {
     color: var(--clr-neutral-100);
     border-bottom: 4px solid var(--clr-planet);
   }
@@ -453,23 +465,24 @@ h3 {
     display: flex;
     justify-content: space-between;
   }
-  #planet-nav li {
+  #planet-nav button {
     display: inline-block;
     border: none;
     color: var(--clr-neutral-400);
   }
 
-  #planet-nav li.active {
+  #planet-nav button.active {
     color: var(--clr-neutral-100);
   }
 
   @media (hover: hover) {
-    #planet-nav li:hover {
+    #planet-nav button:hover {
       color: var(--clr-neutral-100);
+      cursor: pointer;
     }
   }
-  #planet-nav li:focus-visible,
-  #planet-nav li:active {
+  #planet-nav button:focus-visible,
+  #planet-nav button:active {
     color: var(--clr-neutral-100);
   }
 
@@ -487,12 +500,12 @@ h3 {
   }
 
   #planet-info .planet {
-    max-height: 265px;
-    max-width: 265px;
+    max-height: 280px;
+    max-width: 280px;
   }
 
   #planet-info .geology {
-    left: calc(50% - 52px);
+    left: calc(50% - 55px);
   }
 
   #planet-info article {
@@ -511,7 +524,7 @@ h3 {
     flex-direction: column;
     gap: 16px;
   }
-  #planet-info li {
+  #planet-info button {
     border: 1px solid var(--clr-neutral-400);
     color: var(--clr-neutral-100);
     height: 40px;
@@ -519,27 +532,28 @@ h3 {
     display: flex;
     align-items: center;
     gap: 5px;
+    width: 100%;
   }
 
-  #planet-info li.active {
+  #planet-info button.active {
     border: 1px solid var(--clr-planet);
     background-color: var(--clr-planet);
   }
 
   @media (hover: hover) {
-    #planet-info li:hover {
+    #planet-info button:hover {
       border: 1px solid var(--clr-neutral-400);
       background-color: var(--clr-neutral-600);
       cursor: pointer;
     }
   }
 
-  #planet-info li:focus-visible {
+  #planet-info button:focus-visible {
     border: 1px solid var(--clr-neutral-400);
     background-color: var(--clr-neutral-600);
   }
 
-  #planet-info li:active {
+  #planet-info button:active {
     border: 1px solid var(--clr-planet);
     background-color: var(--clr-planet);
   }
@@ -565,21 +579,21 @@ h3 {
   body {
     margin: 0px 0px;
   }
-  .desktop-header-wrapper {
+  .header-wrapper {
     display: grid;
-    align-items: center;
     max-width: 1440px;
     margin: auto;
     padding: 0px 32px;
     border-bottom: 1px solid var(--clr-neutral-400);
   }
   #header {
-    display: block;
-    grid-column: 1/3;
+    padding: 0px;
   }
 
-  #header h1 {
-    padding-top: 6px;
+  #header.grid {
+    height: fit-content;
+    width: fit-content;
+    align-self: center;
   }
 
   #planet-nav,
@@ -590,24 +604,28 @@ h3 {
     transition: 0s;
   }
 
-  #planet-nav li {
-    border-top: 4px solid transparent;
-    padding-top: -4px;
+  #planet-nav {
+    grid-column: 9/13;
   }
 
-  #planet-nav li.active {
+  #planet-nav button {
+    border-top: 4px solid transparent;
+  }
+
+  #planet-nav button.active {
     color: var(--clr-neutral-100);
   }
 
   @media (hover: hover) {
-    #planet-nav li:hover {
+    #planet-nav button:hover {
       color: var(--clr-neutral-100);
       border-top: 4px solid var(--clr-planet);
     }
   }
-  #planet-nav li:focus-visible,
-  #planet-nav li:active {
-    color: var(--clr-planet);
+  #planet-nav button:focus-visible,
+  #planet-nav button:active {
+    color: var(--clr-neutral-100);
+    border-top: 4px solid var(--clr-planet);
   }
 
   .desktop-body-wrapper {

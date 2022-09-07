@@ -28,21 +28,21 @@ function App() {
 
   return (
     <>
-      <div className="desktop-header-wrapper">
+      <div className="header-wrapper">
         <header id="header" className="grid">
           <h1>The Planets</h1>
-          <svg role='open navigation in mobile view' onClick={mobileNav} onKeyDown={mobileNav} tabIndex='0' xmlns="http://www.w3.org/2000/svg" width="24" height="17"><g fill="#FFF" fill-rule="evenodd"><path d="M0 0h24v3H0zM0 7h24v3H0zM0 14h24v3H0z" /></g></svg>
+          <button onClick={mobileNav} role='open navigation in mobile view'><svg tabIndex='0' xmlns="http://www.w3.org/2000/svg" width="24" height="17"><g fill="#FFF" fill-rule="evenodd"><path d="M0 0h24v3H0zM0 7h24v3H0zM0 14h24v3H0z" /></g></svg></button>
         </header>
         <nav id='planet-nav' role='website navigation'>
-          <ul>
-            <li id="0" className={navState === '0' ? 'active' : null} onClick={(e) => handleNavChange(e)}><div className="planet-icon mercury"></div>Mercury<img className="chevron" src='/assets/icon-chevron.svg' alt="chevron" /></li>
-            <li id="1" className={navState === '1' ? 'active' : null} onClick={(e) => handleNavChange(e)}><div className="planet-icon venus"></div>Venus<img className="chevron" src='/assets/icon-chevron.svg' alt="chevron" /></li>
-            <li id="2" className={navState === '2' ? 'active' : null} onClick={(e) => handleNavChange(e)}><div className="planet-icon earth"></div>Earth<img className="chevron" src='/assets/icon-chevron.svg' alt="chevron" /></li>
-            <li id="3" className={navState === '3' ? 'active' : null} onClick={(e) => handleNavChange(e)}><div className="planet-icon mars"></div>Mars<img className="chevron" src='/assets/icon-chevron.svg' alt="chevron" /></li>
-            <li id="4" className={navState === '4' ? 'active' : null} onClick={(e) => handleNavChange(e)}><div className="planet-icon jupiter"></div>Jupiter<img className="chevron" src='/assets/icon-chevron.svg' alt="chevron" /></li>
-            <li id="5" className={navState === '5' ? 'active' : null} onClick={(e) => handleNavChange(e)}><div className="planet-icon saturn"></div>Saturn<img className="chevron" src='/assets/icon-chevron.svg' alt="chevron" /></li>
-            <li id="6" className={navState === '6' ? 'active' : null} onClick={(e) => handleNavChange(e)}><div className="planet-icon uranus"></div>Uranus<img className="chevron" src='/assets/icon-chevron.svg' alt="chevron" /></li>
-            <li id="7" className={navState === '7' ? 'active' : null} onClick={(e) => handleNavChange(e)}><div className="planet-icon neptune"></div>Neptune<img className="chevron" src='/assets/icon-chevron.svg' alt="chevron" /></li>
+          <ul role='list'>
+            <li><button id="0" className={navState === '0' ? 'active' : null} onClick={(e) => handleNavChange(e)}><div className="planet-icon mercury"></div>Mercury<img className="chevron" src='/assets/icon-chevron.svg' alt="chevron" /></button></li>
+            <li><button id="1" className={navState === '1' ? 'active' : null} onClick={(e) => handleNavChange(e)}><div className="planet-icon venus"></div>Venus<img className="chevron" src='/assets/icon-chevron.svg' alt="chevron" /></button></li>
+            <li><button id="2" className={navState === '2' ? 'active' : null} onClick={(e) => handleNavChange(e)}><div className="planet-icon earth"></div>Earth<img className="chevron" src='/assets/icon-chevron.svg' alt="chevron" /></button></li>
+            <li><button id="3" className={navState === '3' ? 'active' : null} onClick={(e) => handleNavChange(e)}><div className="planet-icon mars"></div>Mars<img className="chevron" src='/assets/icon-chevron.svg' alt="chevron" /></button></li>
+            <li><button id="4" className={navState === '4' ? 'active' : null} onClick={(e) => handleNavChange(e)}><div className="planet-icon jupiter"></div>Jupiter<img className="chevron" src='/assets/icon-chevron.svg' alt="chevron" /></button></li>
+            <li><button id="5" className={navState === '5' ? 'active' : null} onClick={(e) => handleNavChange(e)}><div className="planet-icon saturn"></div>Saturn<img className="chevron" src='/assets/icon-chevron.svg' alt="chevron" /></button></li>
+            <li><button id="6" className={navState === '6' ? 'active' : null} onClick={(e) => handleNavChange(e)}><div className="planet-icon uranus"></div>Uranus<img className="chevron" src='/assets/icon-chevron.svg' alt="chevron" /></button></li>
+            <li><button id="7" className={navState === '7' ? 'active' : null} onClick={(e) => handleNavChange(e)}><div className="planet-icon neptune"></div>Neptune<img className="chevron" src='/assets/icon-chevron.svg' alt="chevron" /></button></li>
           </ul>
         </nav>
       </div>
@@ -62,9 +62,9 @@ function App() {
           </article>
           <nav role='planet feature navigation'>
             <ol role='list'>
-              <li tabIndex='0' onClick={() => setPageState('overview')} className={pageState === 'overview' ? 'active' : null}><span className="hide num">01</span> Overview</li>
-              <li tabIndex='0' onClick={() => setPageState('structure')} className={pageState === 'structure' ? 'active' : null}><span className="hide num">02</span> <span className="hide">Internal </span>Structure</li>
-              <li tabIndex='0' onClick={() => setPageState('geology')} className={pageState === 'geology' ? 'active' : null}><span className="hide num">03</span> Surface <span className="hide">Geology</span></li>
+              <li> <button className={pageState === 'overview' ? 'active' : null} onClick={() => setPageState('overview')}><span className="hide num">01</span> Overview</button></li>
+              <li> <button className={pageState === 'structure' ? 'active' : null} onClick={() => setPageState('structure')}><span className="hide num">02</span> <span className="hide">Internal </span>Structure</button></li>
+              <li> <button className={pageState === 'geology' ? 'active' : null} onClick={() => setPageState('geology')} ><span className="hide num">03</span> Surface <span className="hide">Geology</span></button></li>
             </ol>
           </nav>
         </section>

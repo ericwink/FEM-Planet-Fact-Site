@@ -76,43 +76,6 @@
   }
 }
 
-/*
-  --header
-  h1 - antonio 400fw 28px 36.21lh --clr-n-100
-  site nav a - Spartan 700fw  11px 25lh --clr-n-100?? maybe 300, 100 on hover and line over top!!
-      mobile...               15px  --clr-n-100 for sure 
-
-  --planet-info
-  h2 - antonio 400fw  80px  103.52lh --clr-n-100
-      tablet....      48px  62.11lh
-      mobile....      40px  51.76lh
-  p - spartan 400fw 14px  25lh --clr-n-100
-      tablet....    11px  22lh
-      mobile...     11px  22lh
-  footer 'SOURCE' - spartan 400fw 14px  25lh --clr-n-100?? maybe 300
-      tablet...                   12px  
-      mobile...                   12px  
-  footer 'WIKIPEDIA' - spartan 700fw  14px 25lh --clr-n-100?  maybe 300
-      tablet...                       12px
-      mobile...                       12px
-
-  --planet-info-nav
-  feature nav button number - spartan 700fw 12px 25lh --clr-n-100? maybe 300
-      tablet...                             9px
-      mobile...        HIDDEN
-  feature nav button text - spartan 700fw 12px 25lh --clr-n-100
-      tablet...                           9px
-      mobile...                                10lh?
-
-  --planet facts
-  h3 - Spartan 700fw  11px 25lh - clr-n-100? 300 maybe
-      tablet...       8px  16lh
-      mobile...       8px  16lh
-  p - antonio 400fw 40px 51.76lh - clr-n-100
-      tablet...     24px 31.05lh
-      mobile...     20px 25.88lh
-  */
-
 /* reset */
 /* Box sizing rules */
 *,
@@ -218,17 +181,11 @@ h3 {
   font-weight: var(--fw-bold);
   color: var(--clr-neutral-400);
 }
-#planet-nav a {
+#planet-nav li {
   font-family: var(--ff-spartan);
   font-size: var(--fs-site-nav);
   font-weight: var(--fw-bold);
   color: var(--clr-neutral-100);
-}
-
-@media (hover: hover) {
-  #planet-nav a:hover {
-    color: var(--clr-neutral-400);
-  }
 }
 
 #planet-info p {
@@ -282,7 +239,7 @@ h3 {
 }
 
 /* mobile styles */
-@media screen and (min-width: 200px) {
+@media screen and (min-width: 0px) {
   body {
     margin: 16px 24px;
   }
@@ -319,6 +276,13 @@ h3 {
     align-items: center;
     padding: 20px 0px;
     border-bottom: 1px solid var(--clr-neutral-400);
+  }
+
+  @media (hover: hover) {
+    #planet-nav li:hover {
+      color: var(--clr-neutral-400);
+      cursor: pointer;
+    }
   }
 
   #planet-nav .planet-icon {
@@ -492,22 +456,20 @@ h3 {
   #planet-nav li {
     display: inline-block;
     border: none;
-  }
-  #planet-nav a {
     color: var(--clr-neutral-400);
   }
 
-  #planet-nav a.active {
+  #planet-nav li.active {
     color: var(--clr-neutral-100);
   }
 
   @media (hover: hover) {
-    #planet-nav a:hover {
+    #planet-nav li:hover {
       color: var(--clr-neutral-100);
     }
   }
-  #planet-nav a:focus-visible,
-  #planet-nav a:active {
+  #planet-nav li:focus-visible,
+  #planet-nav li:active {
     color: var(--clr-neutral-100);
   }
 
@@ -615,6 +577,11 @@ h3 {
     display: block;
     grid-column: 1/3;
   }
+
+  #header h1 {
+    padding-top: 6px;
+  }
+
   #planet-nav,
   #planet-nav.show {
     grid-column: 8/13;
@@ -623,22 +590,23 @@ h3 {
     transition: 0s;
   }
 
-  #planet-nav a {
-    padding-top: 25px;
+  #planet-nav li {
+    border-top: 4px solid transparent;
+    padding-top: -4px;
   }
 
-  #planet-nav a.active {
+  #planet-nav li.active {
     color: var(--clr-neutral-100);
   }
 
   @media (hover: hover) {
-    #planet-nav a:hover {
+    #planet-nav li:hover {
       color: var(--clr-neutral-100);
       border-top: 4px solid var(--clr-planet);
     }
   }
-  #planet-nav a:focus-visible,
-  #planet-nav a:active {
+  #planet-nav li:focus-visible,
+  #planet-nav li:active {
     color: var(--clr-planet);
   }
 
